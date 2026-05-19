@@ -1,0 +1,59 @@
+#include "Silpo.h"
+
+int main() {
+    SilpoOrder myOrder;
+    myOrder.loadCatalog("list_product.csv");
+
+    int choice;
+    string inputName, promo, timeStr;
+    double qty;
+
+    while (true) {
+        cout << "\n1. Catalog | 2. Add | 3. Update Qty | 4. Remove | 5. Promo | 6. Time | 7. Pay & Save | 8. Exit\nChoice: ";
+        if (!(cin >> choice)) { cin.clear(); cin.ignore(1000, '\n'); continue; }
+
+        if (choice == 1) {
+            myOrder.showCatalog();
+        }
+        else if (choice == 2) {
+            cout << "Name: "; cin.ignore(); getline(cin, inputName);
+            if (myOrder.isProductInCatalog(inputName)) {
+                cout << "How many " << myOrder.getUnit(inputName) << "? "; cin >> qty;
+                myOrder.addProduct(inputName, qty);
+            }
+            else {
+                cout << "Not found!";
+            }
+        }
+        else if (choice == 3) {
+            cout << "Name: "; cin.ignore(); getline(cin, inputName);
+            cout << "New quantity: "; cin >> qty;
+            myOrder.updateQuantity(inputName, qty);
+        }
+        else if (choice == 4) {
+            cout << "Name: "; cin.ignore(); getline(cin, inputName);
+            myOrder.removeProduct(inputName);
+        }
+        else if (choice == 5) {
+            cout << "Code: "; cin >> promo;
+            myOrder.applyPromoCode(promo);
+        }
+        else if (choice == 6) {
+            cout << "Time: ";
+            cin.ignore();
+            getline(cin, timeStr);
+            myOrder.setDeliveryTime(timeStr);
+        }
+        else if (choice == 7) {
+            if (myOrder.isBasketEmpty()) cout << "Basket empty!";
+            else {
+                myOrder.setStatus(OrderStatus::PAID);
+                myOrder.saveReceipt("receipt.txt");
+                cout << "Done! Saved to receipt.txt";
+                break;
+            }
+        }
+        else if (choice == 8) break;
+    }
+    return 0;
+}
