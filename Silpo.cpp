@@ -131,14 +131,31 @@ void SilpoOrder::saveReceipt(string filename) const {
     file << "Status: " << statusToString() << endl;
     file << "-----------------------------------" << endl;
 
+    // —початку рахуЇмо чисту суму вс≥х товар≥в без знижки
+    double subtotal = 0;
     for (size_t i = 0; i < basket.size(); i++) {
         file << left << setw(18) << basket[i].name
             << basket[i].quantity << " " << basket[i].unit
             << " x " << fixed << setprecision(2) << basket[i].price << endl;
+
+        subtotal += basket[i].price * basket[i].quantity;
     }
 
     file << "-----------------------------------" << endl;
+
+    // ¬иводимо пром≥жну суму (загальну варт≥сть товар≥в)
+    file << fixed << setprecision(2);
+    file << "Subtotal: " << subtotal << " UAH" << endl;
+
+    // якщо застосовано промокод (discount > 0), виводимо розм≥р знижки
+    if (discount > 0.0) {
+        double discountAmount = subtotal * discount;
+        file << "Discount (" << (discount * 100) << "%): -" << discountAmount << " UAH" << endl;
+    }
+
+    // ¬иводимо ф≥нальну суму до сплати
     file << "TOTAL: " << calculateTotal() << " UAH" << endl;
     file << "-----------------------------------" << endl;
+
     file.close();
 }

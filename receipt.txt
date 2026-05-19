@@ -1,0 +1,13 @@
+---------- SILPO RECEIPT ----------
+Date: Tue May 19 14:53:11 2026
+Delivery: 3 June 10:00
+Status: Paid
+-----------------------------------
+Apples Golden     3 1_kg x 28.00
+Potatoes          6.00 1_kg x 13.50
+Sugar             2.00 1_kg x 32.00
+-----------------------------------
+Subtotal: 229.00 UAH
+Discount (10.00%): -22.90 UAH
+TOTAL: 206.10 UAH
+-----------------------------------
