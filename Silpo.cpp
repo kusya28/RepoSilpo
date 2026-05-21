@@ -47,6 +47,11 @@ string SilpoOrder::getUnit(string name) {
 }
 
 void SilpoOrder::addProduct(string name, double qty) {
+    if (status != OrderStatus::PENDING) {
+        cout << ">>> Error: Cannot modify order. It is already paid or processed!" << endl;
+        return;
+    }
+    
     if (isProductInCatalog(name)) {
         basket.push_back({
             name,
@@ -104,7 +109,26 @@ void SilpoOrder::setDeliveryTime(string dateTime) {
 }
 
 void SilpoOrder::setStatus(OrderStatus newStatus) {
+    // якщо замовленн€ скасоване або виконане, його статус уже н≥коли не можна зм≥нити
+    if (status == OrderStatus::CANCELLED || status == OrderStatus::COMPLETED) {
+        cout << ">>> Error: Cannot change status of a finalized order!" << endl;
+        return;
+    }
+
+    // Ћог≥ка дозволених переход≥в
+    if (newStatus == OrderStatus::PAID && status != OrderStatus::PENDING) {
+        cout << ">>> Error: You can only pay for a pending order!" << endl;
+        return;
+    }
+
+    if (newStatus == OrderStatus::COMPLETED && status != OrderStatus::PAID) {
+        cout << ">>> Error: Cannot complete order before it is paid!" << endl;
+        return;
+    }
+
+    // якщо все добре Ч зм≥нюЇмо
     status = newStatus;
+    cout << ">>> Status updated to: " << statusToString() << endl;
 }
 
 string SilpoOrder::statusToString() const {
