@@ -1,6 +1,11 @@
 #include "Silpo.h"
+#include <windows.h>
+#include <mmsystem.h>
 
 int main() {
+    // Запуск фонової музики по колу та асинхронно
+    PlaySound(TEXT("background.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+
     SilpoOrder myOrder;
     myOrder.loadCatalog("list_product.csv");
 
@@ -61,5 +66,6 @@ int main() {
         }
         else if (choice == 8) break;
     }
+    PlaySound(NULL, 0, 0);
     return 0;
 }

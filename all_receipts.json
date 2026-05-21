@@ -49,5 +49,27 @@
         ],
         "status": "Paid",
         "total_price": 25440.5
+    },
+    {
+        "delivery_time": "27 May 11:00",
+        "discount_percent": 10.0,
+        "products": [
+            {
+                "name": "Cucumbers",
+                "price_per_unit": 65.0,
+                "quantity": 7.0,
+                "subtotal": 455.0,
+                "unit": "1_kg"
+            },
+            {
+                "name": "Water",
+                "price_per_unit": 16.0,
+                "quantity": 7.0,
+                "subtotal": 112.0,
+                "unit": "1_bottle"
+            }
+        ],
+        "status": "Paid",
+        "total_price": 510.3
     }
 ]
