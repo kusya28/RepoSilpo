@@ -58,4 +58,6 @@ public:
     void saveReceipt(string filename) const;
 
     bool isBasketEmpty() const { return basket.empty(); }
+
+    void saveToJsonHistory(string filename) const;
 };

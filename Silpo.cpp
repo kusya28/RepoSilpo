@@ -1,4 +1,7 @@
 #include "Silpo.h"
+#include "json.hpp"
+
+using json = nlohmann::json;
 
 SilpoOrder::SilpoOrder() : status(OrderStatus::PENDING), discount(0.0), deliveryTime("Not set") {}
 
@@ -182,4 +185,51 @@ void SilpoOrder::saveReceipt(string filename) const {
     file << "-----------------------------------" << endl;
 
     file.close();
+}
+
+void SilpoOrder::saveToJsonHistory(string filename) const {
+    json historyArray = json::array(); // Створюємо порожній масив JSON
+
+    // Спробуємо прочитати вже наявну історію з файлу
+    ifstream inFile(filename);
+    if (inFile.is_open()) {
+        try {
+            inFile >> historyArray; // Якщо файл є і там правильний JSON, зчитуємо його
+        }
+        catch (...) {
+            // Якщо файл був порожній або пошкоджений, починаємо з нового масиву
+            historyArray = json::array();
+        }
+        inFile.close();
+    }
+
+    // Створюємо JSON-об'єкт для поточного чека
+    json currentOrder;
+    currentOrder["status"] = statusToString();
+    currentOrder["delivery_time"] = deliveryTime;
+    currentOrder["discount_percent"] = discount * 100;
+    currentOrder["total_price"] = calculateTotal();
+
+    // Створюємо масив товарів для поточного чека
+    json productsArray = json::array();
+    for (size_t i = 0; i < basket.size(); i++) {
+        json item;
+        item["name"] = basket[i].name;
+        item["quantity"] = basket[i].quantity;
+        item["unit"] = basket[i].unit;
+        item["price_per_unit"] = basket[i].price;
+        item["subtotal"] = basket[i].price * basket[i].quantity;
+        productsArray.push_back(item);
+    }
+    currentOrder["products"] = productsArray;
+
+    // Додаємо поточний чек у загальну історію
+    historyArray.push_back(currentOrder);
+
+    // Записуємо оновлену історію назад у файл 
+    ofstream outFile(filename);
+    if (outFile.is_open()) {
+        outFile << historyArray.dump(4);
+        outFile.close();
+    }
 }

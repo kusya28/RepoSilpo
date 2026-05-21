@@ -45,11 +45,17 @@ int main() {
             myOrder.setDeliveryTime(timeStr);
         }
         else if (choice == 7) {
-            if (myOrder.isBasketEmpty()) cout << "Basket empty!";
+            if (myOrder.isBasketEmpty()) {
+                cout << "Basket empty!";
+            }
             else {
                 myOrder.setStatus(OrderStatus::PAID);
                 myOrder.saveReceipt("receipt.txt");
-                cout << "Done! Saved to receipt.txt";
+
+                // «бер≥гаЇмо цей чек у загальну базу даних JSON
+                myOrder.saveToJsonHistory("all_receipts.json");
+
+                cout << "Done! Saved to receipt.txt and all_receipts.json";
                 break;
             }
         }
