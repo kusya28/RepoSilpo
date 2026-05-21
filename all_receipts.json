@@ -93,5 +93,42 @@
         ],
         "status": "Paid",
         "total_price": 3199.5
+    },
+    {
+        "delivery_time": "22 May 12:00",
+        "discount_percent": 10.0,
+        "products": [
+            {
+                "name": "Sunflower",
+                "price_per_unit": 58.0,
+                "quantity": 3.0,
+                "subtotal": 174.0,
+                "unit": "1_bottle"
+            }
+        ],
+        "status": "Paid",
+        "total_price": 156.6
+    },
+    {
+        "delivery_time": "22 May 12:00",
+        "discount_percent": 10.0,
+        "products": [
+            {
+                "name": "Pork Steak",
+                "price_per_unit": 210.0,
+                "quantity": 9.0,
+                "subtotal": 1890.0,
+                "unit": "1_kg"
+            },
+            {
+                "name": "Water",
+                "price_per_unit": 16.0,
+                "quantity": 7.0,
+                "subtotal": 112.0,
+                "unit": "1_bottle"
+            }
+        ],
+        "status": "Paid",
+        "total_price": 1801.8
     }
 ]
