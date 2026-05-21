@@ -1,12 +1,12 @@
 ---------- SILPO RECEIPT ----------
-Date: Thu May 21 20:00:44 2026
-Delivery: 27 May 11:00
+Date: Thu May 21 20:05:10 2026
+Delivery: 21 May 21:00
 Status: Paid
 -----------------------------------
-Cucumbers         7 1_kg x 65.00
-Water             7.00 1_bottle x 16.00
+Salt              3 1_kg x 25.00
+Beef              12.00 1_kg x 290.00
 -----------------------------------
-Subtotal: 567.00 UAH
-Discount (10.00%): -56.70 UAH
-TOTAL: 510.30 UAH
+Subtotal: 3555.00 UAH
+Discount (10.00%): -355.50 UAH
+TOTAL: 3199.50 UAH
 -----------------------------------

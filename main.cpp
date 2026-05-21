@@ -6,6 +6,8 @@ int main() {
     // Запуск фонової музики по колу та асинхронно
     PlaySound(TEXT("background.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 
+    cout << "------ SILPO ------\n";
+
     SilpoOrder myOrder;
     myOrder.loadCatalog("list_product.csv");
 
