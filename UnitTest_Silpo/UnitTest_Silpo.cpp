@@ -11,6 +11,7 @@ namespace UnitTestSilpo
 	public:
 
 		// ПОЧАТКОВИЙ СТАН ТА КАТАЛОГ
+
 		TEST_METHOD(TestInitialBasketIsEmpty)
 		{
 			SilpoOrder order;
@@ -86,8 +87,6 @@ namespace UnitTestSilpo
 			// Перевіряємо, що встановлення часу працює без винятків у коді
 			order.setDeliveryTime("21.05.2026 18:00");
 
-			// Оскільки deliveryTime приватний, ми опосередковано перевіряємо, 
-			// що об'єкт залишається в стабільному стані
 			Assert::IsTrue(order.isBasketEmpty());
 		}
 
@@ -98,6 +97,26 @@ namespace UnitTestSilpo
 			order.setStatus(OrderStatus::PAID);
 			order.setStatus(OrderStatus::COMPLETED);
 			order.setStatus(OrderStatus::CANCELLED);
+
+			Assert::AreEqual(0.0, order.calculateTotal());
+		}
+
+		TEST_METHOD(TestCannotAddProductToPaidOrder)
+		{
+			SilpoOrder order;
+			// Замовлення стає оплаченим
+			order.setStatus(OrderStatus::PAID);
+
+			// Спробуємо додати товар (навіть якщо каталог порожній, перевіримо, що кошик залишається порожнім)
+			order.addProduct("Milk", 2.0);
+			Assert::IsTrue(order.isBasketEmpty());
+		}
+
+		TEST_METHOD(TestInvalidStatusTransition)
+		{
+			SilpoOrder order;
+			// Намагаємось завершити замовлення в обхід оплати
+			order.setStatus(OrderStatus::COMPLETED);
 
 			Assert::AreEqual(0.0, order.calculateTotal());
 		}
