@@ -1,0 +1,53 @@
+[
+    {
+        "delivery_time": "4 May 2026 15:00",
+        "discount_percent": 10.0,
+        "products": [
+            {
+                "name": "Sugar",
+                "price_per_unit": 32.0,
+                "quantity": 3.0,
+                "subtotal": 96.0,
+                "unit": "1_kg"
+            },
+            {
+                "name": "Tea Black",
+                "price_per_unit": 55.0,
+                "quantity": 4.0,
+                "subtotal": 220.0,
+                "unit": "1_pack"
+            }
+        ],
+        "status": "Paid",
+        "total_price": 284.40000000000003
+    },
+    {
+        "delivery_time": "22 May 19:00",
+        "discount_percent": 0.0,
+        "products": [
+            {
+                "name": "Coca-Cola",
+                "price_per_unit": 22.5,
+                "quantity": 5.0,
+                "subtotal": 112.5,
+                "unit": "1_bottle"
+            },
+            {
+                "name": "Water",
+                "price_per_unit": 16.0,
+                "quantity": 8.0,
+                "subtotal": 128.0,
+                "unit": "1_bottle"
+            },
+            {
+                "name": "Coffee Arabica",
+                "price_per_unit": 45.0,
+                "quantity": 560.0,
+                "subtotal": 25200.0,
+                "unit": "100_g"
+            }
+        ],
+        "status": "Paid",
+        "total_price": 25440.5
+    }
+]

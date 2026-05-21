@@ -1,13 +1,12 @@
 ---------- SILPO RECEIPT ----------
-Date: Tue May 19 14:53:11 2026
-Delivery: 3 June 10:00
+Date: Thu May 21 19:39:13 2026
+Delivery: 22 May 19:00
 Status: Paid
 -----------------------------------
-Apples Golden     3 1_kg x 28.00
-Potatoes          6.00 1_kg x 13.50
-Sugar             2.00 1_kg x 32.00
+Coca-Cola         5 1_bottle x 22.50
+Water             8.00 1_bottle x 16.00
+Coffee Arabica    560.00 100_g x 45.00
 -----------------------------------
-Subtotal: 229.00 UAH
-Discount (10.00%): -22.90 UAH
-TOTAL: 206.10 UAH
+Subtotal: 25440.50 UAH
+TOTAL: 25440.50 UAH
 -----------------------------------
