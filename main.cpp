@@ -1,10 +1,11 @@
+#pragma comment(lib, "winmm.lib")
 #include "Silpo.h"
 #include <windows.h>
 #include <mmsystem.h>
 
 int main() {
     // Запуск фонової музики по колу та асинхронно
-    PlaySound(TEXT("background.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+    PlaySound(TEXT("C:\\Users\\User\\source\\repos\\NewRepo3\\background.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 
     cout << "------ SILPO ------\n";
 
